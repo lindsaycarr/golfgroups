@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : ".Rhistory",
+    "created" : 1499082650844.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "32445969",
+    "id" : "D8C1ACEC",
+    "lastKnownWriteTime" : 1499082662,
+    "last_content_update" : 1499082662698,
+    "path" : "D:/LRCData/R/golf/.gitignore",
+    "project_path" : ".gitignore",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 4,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "gitignore"
+}

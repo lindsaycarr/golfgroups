@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "# golf group generator\n\nGenerate randomized golf groups based on the number of days, number of golfers, and group sizes. Made it for my Dad who wanted to randomize his groups, and minimize the number of times people played with the same people. \n\nI'm sure there are thousands of ways to optimize this code. First time playing with Shiny, so that was fun!\n",
+    "created" : 1499082446536.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3959506095",
+    "id" : "8149D4B6",
+    "lastKnownWriteTime" : 1499082644,
+    "last_content_update" : 1499082644751,
+    "path" : "D:/LRCData/R/golf/README.md",
+    "project_path" : "README.md",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "markdown"
+}

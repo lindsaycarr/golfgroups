@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "library(shiny)\nlibrary(shinythemes)\n\n# Define UI for dataset viewer application\nshinyUI(fluidPage(\n  \n  theme = shinytheme(\"darkly\"),\n  \n  # Application title\n  headerPanel(\"Golf Groups\"),\n  \n  # Sidebar with controls to select a dataset and specify the number\n  # of observations to view\n  sidebarPanel(\n    numericInput(\"numgolfers\", \"Number of golfers:\", 16),\n    numericInput(\"numdays\", \"Number of days:\", 3),\n    numericInput(\"groupsize\", \"Number of people in each group:\", 4),\n    actionButton(\"go\", \"Go\")\n  ),\n  \n  # Show a summary of the dataset and an HTML table with the requested\n  # number of observations\n  mainPanel(\n    textOutput(\"title\"),\n    tableOutput(\"view\")\n  )\n))\n",
+    "created" : 1499051653744.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1914424581",
+    "id" : "74C3227E",
+    "lastKnownWriteTime" : 1499053674,
+    "last_content_update" : 1499053674239,
+    "path" : "D:/LRCData/R/golf/ui.R",
+    "project_path" : "ui.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "\nlibrary(shiny)\nlibrary(dplyr)\nlibrary(tidyr)\n\nrandomizeGolfers <- function(numdays, numgolfers, groupsize){\n  numgroups <- numgolfers %/% groupsize\n  if(numgolfers %% groupsize != 0){\n    stop(\"group sizes would be uneven, guess you can't golf\")\n  }\n    \n  golferdf <- data.frame(day = sort(rep(1:numdays, numgolfers)),\n                         golfer = NA,\n                         group = NA)\n  g <- 1\n  for(i in 1:numdays){\n    grps <- sort(rep(1:numgroups, groupsize))\n    golferdf[g:(g+numgolfers-1), 'golfer'] <- sample(1:numgolfers,numgolfers)\n    golferdf[g:(g+numgolfers-1), 'group'] <- grps\n    g <- g + numgolfers\n  }\n  \n  potentialgroups <- mutate(golferdf, daygrp = paste(day, group, sep=\"_\"))\n  return(potentialgroups)\n}\n\nverifyGolfGroups <- function(potentialgroups){\n  g_wrong <- c()\n  for(g in 1:length(unique(potentialgroups[['golfer']]))){\n    dg <- filter(potentialgroups, golfer == g)[['daygrp']]\n    match_grp <- filter(potentialgroups, daygrp %in% dg)\n    if(length(which(duplicated(match_grp$golfer))) > 6){\n      g_wrong <- c(g_wrong, g)\n    }\n  }\n  return(g)\n}\n\nshinyServer(function(input, output) {\n  \n  formatGolfData <- eventReactive(input$go, {\n    \n    numgolfers <- input$numgolfers\n    groupsize <- input$groupsize\n    numdays <- input$numdays\n    \n    gbad <- 1:2\n    x <- 0\n    while(length(gbad) > 1){\n      potentialgroups <- randomizeGolfers(numdays, numgolfers, groupsize)\n      gbad <- verifyGolfGroups(potentialgroups)\n      x <- x + 1\n      print(x)\n    }\n    \n    golfgroups <- as.data.frame(potentialgroups)\n    golfgroups <- select(golfgroups, -daygrp)\n    formattedgroups <- spread(golfgroups, day, group)\n    names(formattedgroups)[-1] <- paste(\"Day\", names(formattedgroups)[-1])\n    return(formattedgroups)\n  })\n\n  output$view <- renderTable({\n    formatGolfData()\n  })\n  \n  output$title <- renderText({\n    \"Golf Group Assignments\"\n  })\n\n})\n",
+    "created" : 1499051694089.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3542895781",
+    "id" : "2B6B7972",
+    "lastKnownWriteTime" : 1499082272,
+    "last_content_update" : 1499082272914,
+    "path" : "D:/LRCData/R/golf/server.R",
+    "project_path" : "server.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
